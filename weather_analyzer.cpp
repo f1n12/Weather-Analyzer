@@ -9,13 +9,13 @@ int main () {
         string start_choice;
         cout << "\nStart program? (Yes/No): ";
         cin >> start_choice;
-        
+
         if (start_choice == "Yes") {
             // Variables declared outside the loop
-            double arr_temperatures[7];  // Indices 0-6
+            double arr_temperatures[7];
             double average_temperatures = 0;
 
-            cout << "Please enter all data in fahrenheit" << endl;
+            cout << "Please enter numbers in Fahreinheit" << endl;
 
             for (int i = 0; i < 7; i++) {
                 double temperature = 0;
@@ -27,12 +27,15 @@ int main () {
                 average_temperatures += temperature;
             }
             average_temperatures /= 7;  
+
             // Finding max number
             double max_number = arr_temperatures[0]; 
             int max_day = 0; 
+            double max_number_celsius;
             for (int i = 1; i < 7; i++) { 
                 if (arr_temperatures[i] > max_number) {  
                     max_number = arr_temperatures[i];
+                    max_number_celsius = (max_number - 32) * 5/9;
                     max_day = i;
                 }
             }
@@ -40,9 +43,11 @@ int main () {
             // Finding min number
             double min_number = arr_temperatures[0];  
             int min_day = 0;
+            double min_number_celsius;
             for (int i = 1; i < 7; i++) {  
                 if (arr_temperatures[i] < min_number) {  
                     min_number = arr_temperatures[i];
+                    min_number_celsius = (min_number - 32) * 5/9;
                     min_day = i;
                 }
             }
@@ -72,11 +77,11 @@ int main () {
             }
             cout << endl << endl;
 
-            cout << "Hottest day: Day " << max_day + 1 << " with " << max_number << "°F" << endl;
+            cout << "Hottest day: Day " << max_day + 1 << " with " << max_number << "°F" << " or " << max_number_celsius << "°C" << endl << endl;
 
-            cout << "Hottest day: Day " << min_day + 1 << " with " << min_number << "°F" << endl;
+            cout << "Hottest day: Day " << min_day + 1 << " with " << min_number << "°F" << " or " << min_number_celsius << "°C" << endl << endl;
 
-            cout << "Average temp: " << average_temperatures << endl << endl;
+            cout << "Average temp: " << average_temperatures << " or " << ((average_temperatures - 32) * 5.0 / 9.0) << endl << endl;
 
             cout << "Number of days above average: " << num_days_above_average << endl << endl;
 
@@ -95,3 +100,4 @@ int main () {
     cout << "Terminating program ...";
     return 0;
 }
+                        
